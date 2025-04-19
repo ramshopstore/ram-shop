@@ -1,0 +1,380 @@
+/* ... (Existing styles remain the same) ... */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+/* --- Basic Reset & Mobile First Setup --- */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; text-size-adjust: 100%; scroll-behavior: smooth; }
+
+/* --- Color Variables --- */
+:root {
+    --shein-pink: rgb(232, 58, 99);
+    --shein-red: rgb(255, 71, 71);
+    --shein-orange: rgb(255, 174, 0);
+    --shein-light-pink: rgb(255, 238, 242);
+    --shein-light-grey: rgb(245, 245, 245);
+    --wifi-blue: rgb(0, 122, 255);
+    --text-dark: rgb(34, 34, 34);
+    --text-medium: rgb(85, 85, 85);
+    --text-light: rgb(136, 136, 136);
+    --background-white: rgb(255, 255, 255);
+    --border-light: rgb(240, 240, 240);
+    --placeholder-bg: rgb(247, 247, 247);
+    --accent-blue-bg: rgb(238, 252, 255);
+    --accent-blue-text: rgb(58, 190, 240);
+    --accent-amber-bg: rgb(255, 248, 225);
+    --accent-amber-text: rgb(255, 171, 0);
+    --accent-green-bg: rgb(241, 248, 233);
+    --accent-green-text: rgb(124, 179, 66);
+    --modal-overlay-bg: rgba(0, 0, 0, 0.6);
+    --profile-menu-overlay-bg: rgba(0, 0, 0, 0.5); /* Profile menu overlay */
+    --border-radius-small: 4px;
+    --border-radius-medium: 8px;
+    --border-radius-large: 20px;
+    --shadow-light: 0 2px 5px rgba(0, 0, 0, 0.07);
+    --shadow-medium: 0 4px 10px rgba(0, 0, 0, 0.09);
+    --shadow-strong: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+body {
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    background-color: var(--background-white);
+    color: var(--text-dark);
+    padding-bottom: 70px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+/* Class to prevent body scroll when modal/menu is open */
+body.no-scroll {
+    overflow: hidden;
+}
+
+
+a { text-decoration: none; color: inherit; }
+button { cursor: pointer; border: none; background: none; font-family: inherit; color: inherit; padding: 0; transition: opacity 0.15s ease, transform 0.15s ease, background-color 0.15s ease; }
+button:active { opacity: 0.8; transform: scale(0.97); }
+img { max-width: 100%; display: block; }
+
+/* --- Shared Section Styling --- */
+section { margin-bottom: 12px; }
+.products-section h2 { font-size: 1.25rem; font-weight: 600; margin-bottom: 16px; padding: 0 15px; text-align: center; }
+
+/* --- Mobile Header --- */
+.site-header-mobile { background-color: var(--background-white); position: sticky; top: 0; z-index: 1000; box-shadow: var(--shadow-light); }
+.top-bar { display: flex; align-items: center; padding: 8px 15px; gap: 12px; height: 48px; }
+.top-bar-btn { font-size: 1.2rem; color: var(--text-medium); display: flex; align-items: center; gap: 4px; }
+.top-bar-btn:hover { color: var(--text-dark); }
+.top-bar-btn.location-btn { background-color: var(--shein-light-grey); padding: 4px 8px; border-radius: var(--border-radius-small); font-size: 0.9rem; }
+.logo-placeholder { font-weight: 700; font-size: 1.2rem; color: var(--shein-pink); margin: 0 auto; flex-shrink: 0; letter-spacing: 0.5px; white-space: nowrap; }
+.cart-icon-btn { position: relative; }
+.cart-badge { position: absolute; top: -4px; right: -6px; background-color: var(--shein-red); color: var(--background-white); font-size: 0.7rem; font-weight: 600; min-width: 17px; height: 17px; border-radius: 9px; display: none; justify-content: center; align-items: center; padding: 0 4px; box-shadow: 0 1px 2px rgba(0,0,0,0.2); }
+.cart-badge.visible { display: flex; }
+
+.search-container { padding: 5px 15px 12px; }
+.search-form-mobile { display: flex; align-items: center; background-color: var(--shein-light-grey); border-radius: var(--border-radius-large); padding: 9px 15px; }
+.search-btn-inside { color: var(--text-light); margin-right: 10px; font-size: 1.1rem; flex-shrink: 0; }
+#search-input-mobile { flex-grow: 1; border: none; outline: none; background: transparent; font-size: 0.95rem; color: var(--text-dark); font-family: 'Poppins', sans-serif; }
+#search-input-mobile::placeholder { color: var(--text-light); }
+.search-clear-btn { color: var(--text-light); margin-left: 8px; font-size: 1rem; flex-shrink: 0; }
+.search-clear-btn:hover { color: var(--text-medium); }
+
+.category-nav { background-color: var(--background-white); border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light); overflow-x: auto; white-space: nowrap; -webkit-overflow-scrolling: touch; scrollbar-width: none; padding: 2px 0; }
+.category-nav::-webkit-scrollbar { display: none; }
+.category-nav-inner { display: inline-flex; padding: 0 10px; min-height: 45px; align-items: center; }
+.category-link { display: inline-block; padding: 12px 12px; font-size: 0.9rem; color: var(--text-medium); text-align: center; flex-shrink: 0; position: relative; cursor: pointer; font-weight: 500; border: none; background: none; }
+.category-link.active { color: var(--text-dark); font-weight: 600; }
+.category-link.active::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 25px; height: 3px; background-color: var(--text-dark); border-radius: 1.5px; }
+.category-link.sale-link { color: var(--shein-pink); font-weight: 600; }
+.category-link.sale-link.active::after { background-color: var(--shein-pink); }
+.category-nav .loading-placeholder { padding: 12px; font-size: 0.9rem; color: var(--text-light); }
+
+/* --- Main Content Styles (Hero, Promo, Quick Links, Products, etc.) --- */
+/* ... (These remain largely unchanged from the previous version) ... */
+#hero-sale { background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.4)), url(images/bg.jpg); background-size: cover; background-position: center; padding: 40px 20px; margin-bottom: 12px; color: var(--background-white); text-align: center; min-height: 220px; display: flex; flex-direction: column; justify-content: center; align-items: center; }
+.hero-content h2 { font-size: 1.8rem; font-weight: 700; margin-bottom: 8px; padding: 0; text-shadow: 1px 1px 3px rgba(0,0,0,0.4); }
+.hero-content p { font-size: 1rem; margin-bottom: 15px; text-shadow: 1px 1px 2px rgba(0,0,0,0.3); }
+.hero-cta-button { margin-top: 10px; }
+.modern-button { background-color: var(--shein-pink); color: var(--background-white); padding: 10px 25px; border-radius: var(--border-radius-large); font-size: 0.9rem; font-weight: 600; text-align: center; display: inline-flex; align-items: center; justify-content: center; gap: 6px; box-shadow: var(--shadow-light); border: none; }
+.modern-button:hover { opacity: 0.9; box-shadow: var(--shadow-medium); }
+.modern-button:active { opacity: 1; transform: scale(0.96); box-shadow: none; }
+.modern-button i { font-size: 0.8em; }
+.modern-button.style-dark { background-color: var(--text-dark); color: var(--background-white); border: 1px solid var(--text-medium); }
+.promo-blocks-section { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 10px; padding: 10px 15px; margin-bottom: 12px; border-bottom: 8px solid var(--shein-light-grey); }
+.promo-block { padding: 12px 8px; border-radius: var(--border-radius-medium); text-align: center; font-size: 0.8rem; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px; cursor: pointer; transition: transform 0.1s ease-in-out, box-shadow 0.15s ease; min-height: 80px; }
+.promo-block:hover { box-shadow: var(--shadow-light); }
+.promo-block:active { transform: scale(0.97); box-shadow: none; }
+.promo-block i { font-size: 1.3rem; margin-bottom: 3px; }
+.promo-block span { font-weight: 500; }
+.promo-block small { font-size: 0.75rem; color: var(--text-medium); line-height: 1.2; }
+.promo-block.style-1 { background-color: var(--shein-light-pink); color: var(--shein-pink); }
+.promo-block.style-2 { background-color: var(--accent-blue-bg); color: var(--accent-blue-text); }
+.promo-block.style-3 { background-color: var(--accent-amber-bg); color: var(--accent-amber-text); }
+.promo-block.style-4 { background-color: var(--accent-green-bg); color: var(--accent-green-text); }
+.promo-block.wifi-block { background-color: var(--wifi-blue); color: var(--background-white); grid-column: span 2; }
+.promo-block.wifi-block i { font-size: 1.5rem; }
+.promo-block.wifi-block span { font-size: 0.95rem; font-weight: 600; }
+.promo-block.wifi-block small { color: rgba(255, 255, 255, 0.8); }
+.quick-links-section { display: flex; justify-content: space-around; align-items: flex-start; text-align: center; padding: 15px; margin-bottom: 12px; gap: 10px; border-bottom: 8px solid var(--shein-light-grey); }
+.quick-link-item { display: flex; flex-direction: column; align-items: center; flex: 1; font-size: 0.75rem; color: var(--text-medium); cursor: pointer; transition: opacity 0.15s ease, transform 0.15s ease; }
+.quick-link-item:hover { opacity: 0.85; }
+.quick-link-item:active { opacity: 1; transform: scale(0.95); }
+.quick-link-item img { width: 55px; height: 55px; object-fit: cover; margin-bottom: 6px; border-radius: var(--border-radius-medium); box-shadow: var(--shadow-light); }
+.quick-link-item span { font-weight: 500; }
+.products-section { padding: 0 15px; margin-bottom: 20px; border-bottom: 8px solid var(--shein-light-grey); padding-bottom: 20px; }
+.product-grid-mobile { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; }
+.loading-placeholder { grid-column: 1 / -1; text-align: center; padding: 40px; color: var(--text-light); font-size: 1rem; }
+.no-products-message { grid-column: 1 / -1; }
+.product-card-mobile { background-color: var(--background-white); border-radius: var(--border-radius-medium); overflow: hidden; display: flex; flex-direction: column; position: relative; cursor: pointer; box-shadow: var(--shadow-light); transition: box-shadow 0.2s ease, transform 0.2s ease; }
+.product-card-mobile:hover { box-shadow: var(--shadow-medium); transform: translateY(-3px); }
+.product-image-container-mobile { position: relative; width: 100%; background-color: var(--placeholder-bg); aspect-ratio: 1 / 1.1; }
+.product-image-mobile { display: block; width: 100%; height: 100%; object-fit: cover; }
+.wishlist-btn { position: absolute; top: 10px; right: 10px; background-color: rgba(255, 255, 255, 0.85); border-radius: 50%; width: 30px; height: 30px; display: flex; justify-content: center; align-items: center; color: var(--text-medium); font-size: 1rem; box-shadow: 0 1px 3px rgba(0,0,0,0.15); z-index: 2; border: none; padding: 0;}
+.wishlist-btn.active { color: var(--shein-pink); }
+.product-info-mobile { padding: 12px 10px; }
+.product-brand-mobile { font-size: 0.75rem; color: var(--text-light); margin-bottom: 4px; text-transform: uppercase; }
+.product-name-mobile { font-size: 0.85rem; color: var(--text-dark); margin-bottom: 6px; line-height: 1.3; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; min-height: 2.6em; font-weight: 500; }
+.product-price-mobile { font-size: 1rem; font-weight: 700; color: var(--text-dark); display: flex; align-items: baseline; flex-wrap: wrap; gap: 5px; }
+.product-price-mobile .original-price { font-size: 0.8rem; color: var(--text-light); text-decoration: line-through; font-weight: 400; }
+.product-price-mobile .discount-percent { font-size: 0.75rem; color: var(--shein-red); font-weight: 700; }
+.quick-add-btn { position: absolute; bottom: 10px; right: 10px; background-color: var(--shein-light-grey); border-radius: 50%; width: 28px; height: 28px; display: flex; justify-content: center; align-items: center; color: var(--text-medium); font-size: 0.9rem; z-index: 2; box-shadow: 0 1px 2px rgba(0,0,0,0.1); border: none; padding: 0; }
+.quick-add-btn:hover { background-color: rgb(230, 230, 230); }
+.quick-add-btn:active { background-color: rgb(220, 220, 220); transform: scale(0.95);}
+.promo-banner-bottom { background-color: var(--text-dark); color: var(--background-white); padding: 12px 15px; display: flex; justify-content: space-between; align-items: center; margin: 20px 0; }
+.promo-banner-bottom span { font-size: 0.85rem; display: flex; align-items: center; gap: 8px; }
+.promo-banner-bottom i { color: var(--shein-orange); font-size: 1.1em; }
+
+/* --- Footer --- */
+.site-footer { background-color: var(--shein-light-grey); color: var(--text-medium); padding: 20px 15px; margin-top: 0; font-size: 0.8rem; text-align: center; }
+.footer-content p { margin-bottom: 8px; }
+.footer-links a { color: var(--text-medium); text-decoration: none; margin: 0 5px; font-weight: 500; }
+.footer-links a:hover { color: var(--text-dark); text-decoration: underline; }
+
+/* --- Sticky Bottom Navigation --- */
+.bottom-nav { position: fixed; bottom: 0; left: 0; width: 100%; height: 60px; background-color: var(--background-white); border-top: 1px solid var(--border-light); box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.06); display: flex; justify-content: space-around; align-items: stretch; z-index: 1000; }
+.bottom-nav-item { display: flex; flex-direction: column; align-items: center; justify-content: center; flex-grow: 1; color: var(--text-light); font-size: 0.7rem; padding: 5px 0; text-align: center; cursor: pointer; border: none; background: none; }
+.bottom-nav-item i { font-size: 1.4rem; margin-bottom: 3px; }
+.bottom-nav-item span { line-height: 1.2; }
+.bottom-nav-item.active { color: var(--text-dark); font-weight: 600; }
+
+/* --- Basic Modal Styling --- */
+.modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: var(--modal-overlay-bg); z-index: 2000; display: none; /* Hidden by default */ justify-content: center; align-items: center; padding: 20px; }
+.modal-overlay.visible { display: flex; } /* Class to show modal */
+.modal-content { background-color: var(--background-white); padding: 25px; border-radius: var(--border-radius-medium); box-shadow: var(--shadow-medium); max-width: 400px; width: 90%; position: relative; text-align: center; }
+.modal-close-btn { position: absolute; top: 8px; right: 10px; font-size: 1.5rem; color: var(--text-light); background: none; border: none; cursor: pointer; }
+.modal-content p { margin-top: 10px; color: var(--text-dark); font-size: 1rem; line-height: 1.6; white-space: pre-wrap; /* Allow line breaks in cart display */ }
+
+/* --- ++ Profile Menu Styling ++ --- */
+.profile-menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--profile-menu-overlay-bg);
+    z-index: 1500; /* Below menu, above content */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+.profile-menu-overlay.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.profile-menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0; /* Full height */
+    width: 80%;
+    max-width: 320px; /* Max width */
+    background-color: var(--background-white);
+    z-index: 1600; /* Above overlay */
+    box-shadow: var(--shadow-strong);
+    display: flex;
+    flex-direction: column;
+    transform: translateX(100%); /* Start off-screen */
+    visibility: hidden;
+    transition: transform 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+.profile-menu.open {
+    transform: translateX(0);
+    visibility: visible;
+}
+
+.profile-menu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    border-bottom: 1px solid var(--border-light);
+}
+.profile-menu-user {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.profile-menu-avatar {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    object-fit: cover;
+    background-color: var(--placeholder-bg); /* Placeholder bg */
+}
+.profile-menu-username {
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: var(--text-dark);
+}
+.profile-menu-close-btn {
+    font-size: 1.6rem;
+    color: var(--text-medium);
+}
+.profile-menu-close-btn:hover {
+    color: var(--text-dark);
+}
+
+.profile-menu-nav {
+    flex-grow: 1; /* Takes remaining space */
+    overflow-y: auto; /* Scroll if content overflows */
+    padding: 15px 0;
+}
+.profile-menu-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.profile-menu-nav li {
+    margin: 0;
+}
+.profile-menu-link {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 12px 20px;
+    color: var(--text-dark);
+    font-size: 1rem;
+    font-weight: 500;
+    transition: background-color 0.15s ease;
+}
+.profile-menu-link i {
+    width: 20px; /* Fixed width for alignment */
+    text-align: center;
+    color: var(--text-medium);
+    font-size: 1.1em;
+}
+.profile-menu-link:hover, .profile-menu-link:focus {
+    background-color: var(--shein-light-grey);
+    color: var(--shein-pink); /* Highlight color on hover */
+}
+.profile-menu-link:hover i, .profile-menu-link:focus i {
+    color: var(--shein-pink);
+}
+.profile-menu-link:active {
+    background-color: rgb(230, 230, 230);
+    transform: scale(0.99); /* Slight press effect */
+}
+
+.profile-menu-footer {
+    padding: 20px;
+    border-top: 1px solid var(--border-light);
+}
+.profile-menu-logout-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--shein-light-pink);
+    color: var(--shein-pink);
+    border-radius: var(--border-radius-medium);
+    font-weight: 600;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+.profile-menu-logout-btn i {
+    font-size: 1.1em;
+}
+.profile-menu-logout-btn:hover {
+     background-color: rgb(255, 230, 236);
+     box-shadow: var(--shadow-light);
+}
+.profile-menu-logout-btn:active {
+     background-color: rgb(255, 220, 230);
+     transform: scale(0.98);
+}
+
+/* --- Desktop Styles Adjustments --- */
+@media (min-width: 768px) {
+    body { font-size: 16px; padding-bottom: 0; }
+    .site-header-mobile .top-bar-btn.location-btn,
+    .bottom-nav,
+    .promo-banner-bottom { display: none; }
+
+    .main-content, .site-header-mobile, .site-footer { max-width: 1200px; margin-left: auto; margin-right: auto; }
+    .site-header-mobile { position: static; box-shadow: none; border-bottom: 1px solid var(--border-light); }
+    .top-bar { height: 55px; padding: 0 20px; gap: 15px; }
+    .logo-placeholder { margin: 0; font-size: 1.4rem; }
+    .search-container { padding: 15px 20px; }
+    .category-nav { padding: 0 20px; border: none; }
+    .category-nav-inner { justify-content: center; }
+    .category-link { padding: 15px 20px; font-size: 1rem; }
+    #hero-sale { min-height: 300px; border-radius: var(--border-radius-medium); margin: 20px auto; }
+    .hero-content h2 { font-size: 2.5rem; }
+    .hero-content p { font-size: 1.1rem; }
+    .promo-blocks-section { grid-template-columns: repeat(5, 1fr); gap: 15px; padding: 15px 20px;}
+    .promo-block.wifi-block { grid-column: span 1; }
+    .quick-links-section { padding: 20px; }
+    .quick-link-item img { width: 70px; height: 70px; }
+    .products-section { padding: 0 20px; border-bottom: none; }
+    .product-grid-mobile { grid-template-columns: repeat(4, 1fr); gap: 20px; }
+    .products-section h2 { font-size: 1.5rem; text-align: left; margin-bottom: 25px; padding: 0; }
+    .site-footer { padding: 30px 20px; font-size: 0.9rem; margin-top: 30px; }
+
+    /* Profile Menu on Desktop - Keep similar behavior for consistency */
+    /* Optional: Reduce width slightly on very large screens if needed */
+    @media (min-width: 1024px) {
+        .profile-menu { max-width: 350px; }
+    }
+}
+
+/* --- Accessibility focus styles --- */
+/* ... (Focus styles remain the same) ... */
+a:focus-visible, button:focus-visible, input[type="search"]:focus-visible {
+    outline: 2px solid var(--shein-pink);
+    outline-offset: 2px;
+    box-shadow: 0 0 0 4px rgba(232, 58, 99, 0.3);
+    border-radius: var(--border-radius-small);
+}
+.product-card-mobile:focus-visible {
+     outline: 2px solid var(--shein-pink);
+     outline-offset: 2px;
+     box-shadow: 0 0 0 4px rgba(232, 58, 99, 0.3);
+     border-radius: var(--border-radius-medium);
+}
+input[type="search"]:focus-visible {
+    box-shadow: none; /* Override general focus for search */
+}
+.search-form-mobile:focus-within { /* Style container when input focused */
+     outline: 2px solid var(--shein-pink);
+     outline-offset: 1px;
+     box-shadow: 0 0 0 4px rgba(232, 58, 99, 0.3);
+}
+/* Focus style for profile menu */
+.profile-menu:focus-visible {
+     outline: 2px solid var(--shein-pink);
+}
+.profile-menu-link:focus-visible {
+    background-color: var(--shein-light-grey);
+    color: var(--shein-pink);
+    outline: none; /* Use background color for focus */
+}
+.profile-menu-link:focus-visible i {
+    color: var(--shein-pink);
+}
+.profile-menu-close-btn:focus-visible,
+.profile-menu-logout-btn:focus-visible {
+     outline: 2px solid var(--shein-pink);
+     outline-offset: 1px;
+}

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>R.A.M SHOP - Gifts & More</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body > <header class="site-header-mobile">
+        <div class="top-bar">
+            <button class="top-bar-btn location-btn" aria-label="Change Location">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>PH</span>
+            </button>
+            <div class="logo-placeholder">R.A.M SHOP</div>
+            <div class="top-bar-spacer"></div>
+            <button class="top-bar-btn search-icon-btn" aria-label="Search"> <i class="fas fa-search"></i> </button>
+            <button class="top-bar-btn wishlist-icon-btn" aria-label="Wishlist"> <i class="far fa-heart"></i> </button>
+            <button class="top-bar-btn user-icon-btn profile-menu-toggle" aria-label="My Account" aria-haspopup="true" aria-controls="profile-menu">
+                <i class="far fa-user"></i>
+            </button>
+            <button class="top-bar-btn cart-icon-btn" aria-label="Shopping Cart">
+                <i class="fas fa-shopping-bag"></i>
+                <span class="cart-badge">0</span>
+            </button>
+        </div>
+
+        <div class="search-container">
+            <form action="#" class="search-form-mobile" role="search">
+                 <button type="submit" class="search-btn-inside" aria-label="Submit Search"> <i class="fas fa-search"></i> </button>
+                <input type="search" id="search-input-mobile" placeholder="Search Flowers, Mugs, T-shirts..." aria-label="Search R.A.M SHOP">
+                <button type="reset" class="search-clear-btn" aria-label="Clear Search" style="display: none;"><i class="fas fa-times-circle"></i></button>
+            </form>
+        </div>
+
+        <nav class="category-nav" aria-label="Main Categories">
+            <div class="category-nav-inner">
+                <div class="loading-placeholder">Loading categories...</div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main-content">
+        <section class="hero-section" id="hero-sale" aria-label="Super Gift Sale">
+             <div class="hero-content">
+                 <h2>Super Gift Sale!</h2>
+                 <p>Up to 50% Off Unique Gifts & Apparel</p>
+                 <a href="#" class="hero-cta-button modern-button" data-category="Sale">Shop Now <i class="fas fa-chevron-right fa-xs"></i></a>
+            </div>
+        </section>
+
+        <section class="promo-blocks-section" aria-label="Promotions and Information">
+            <div class="promo-block style-1" data-promo-id="affiliate"> <i class="fas fa-handshake"></i> <span>Affiliate</span> <small>Earn Rewards</small> </div>
+            <div class="promo-block style-2" data-promo-id="egift"> <i class="fas fa-gift"></i> <span>E-Gift Cards</span> <small>Perfect Gift</small> </div>
+            <div class="promo-block style-3" data-promo-id="trial"> <i class="fas fa-box-open"></i> <span>Free Trial</span> <small>Try Select Items</small> </div>
+            <div class="promo-block style-4" data-promo-id="returns"> <i class="fas fa-undo-alt"></i> <span>Free Returns</span> <small>Easy Process</small> </div>
+             <div class="promo-block wifi-block" data-promo-id="wifi-tickets">
+                 <i class="fas fa-wifi"></i>
+                 <span>Wifi Tickets</span>
+                 <small>Connect & Buy Now!</small>
+            </div>
+        </section>
+
+        <section class="quick-links-section" aria-label="Quick Category Links">
+             <a href="#" class="quick-link-item" data-category="Flowers bouquet">
+                <img src="https://source.unsplash.com/random/100x100/?flowers,bouquet&sig=31" alt="" loading="lazy">
+                <span>Flowers</span>
+            </a>
+            <a href="#" class="quick-link-item" data-category="Gifts">
+                <img src="https://source.unsplash.com/random/100x100/?mug,coffee&sig=32" alt="" loading="lazy">
+                <span>Mugs</span>
+            </a>
+            <a href="#" class="quick-link-item" data-category="Apparel">
+                <img src="https://source.unsplash.com/random/100x100/?tshirt,design&sig=33" alt="" loading="lazy">
+                <span>T-Shirts</span>
+            </a>
+            <a href="#" class="quick-link-item" data-category="Gifts">
+                 <img src="https://source.unsplash.com/random/100x100/?gift,box&sig=34" alt="" loading="lazy">
+                <span>Gift Sets</span>
+            </a>
+             <a href="#" class="quick-link-item" data-category="Accessories">
+                 <img src="https://source.unsplash.com/random/100x100/?home,decor&sig=35" alt="" loading="lazy">
+                <span>Home Decor</span>
+            </a>
+        </section>
+
+        <section class="products-section" aria-labelledby="products-heading">
+            <h2 id="products-heading">Featured Products</h2>
+            <div id="product-grid" class="product-grid-mobile">
+                 <div class="loading-placeholder">Loading products...</div>
+            </div>
+            <p id="no-products-message" class="no-products-message" style="display: none; text-align: center; padding: 30px; color: var(--text-medium);">No products found matching your criteria.</p>
+        </section>
+
+        <section class="promo-banner-bottom" aria-label="First Order Discount">
+            <span><i class="fas fa-tag"></i> Enjoy ₱150 OFF on your First Order</span>
+            <button class="register-button modern-button style-dark">Register</button>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <p>&copy; <span id="footer-year"></span> R.A.M SHOP. All rights reserved.</p>
+            <p>Serving Aroroy, Bicol, Philippines - Current time: <span id="current-time"></span></p>
+            <nav class="footer-links" aria-label="Footer Links">
+                <a href="#">About Us</a> |
+                <a href="#">Contact</a> |
+                <a href="#">Privacy Policy</a>
+            </nav>
+        </div>
+    </footer>
+
+    <nav class="bottom-nav" aria-label="Main Navigation">
+        <a href="#" class="bottom-nav-item active" data-category="Featured" aria-current="page"> <i class="fas fa-home"></i> <span>Home</span> </a>
+        <a href="#" class="bottom-nav-item" data-category="All"> <i class="fas fa-th-large"></i> <span>Category</span> </a>
+        <a href="#" class="bottom-nav-item" data-category="New In"> <i class="fas fa-bolt"></i> <span>New</span> </a>
+        <a href="#" class="bottom-nav-item" data-show="Cart"> <i class="fas fa-shopping-bag"></i> <span>Cart</span> </a>
+        <a href="#" class="bottom-nav-item profile-menu-toggle" data-show="Me" aria-haspopup="true" aria-controls="profile-menu">
+            <i class="far fa-user"></i> <span>Me</span>
+        </a>
+    </nav>
+
+    <div id="alert-modal" class="modal-overlay" style="display: none;">
+        <div class="modal-content">
+            <button class="modal-close-btn" aria-label="Close modal">&times;</button>
+            <p id="modal-message">Modal message goes here.</p>
+        </div>
+    </div>
+
+    <div id="profile-menu-overlay" class="profile-menu-overlay" aria-hidden="true"></div>
+
+    <div id="profile-menu" class="profile-menu" role="dialog" aria-modal="true" aria-labelledby="profile-menu-heading" aria-hidden="true">
+        <div class="profile-menu-header">
+            <div class="profile-menu-user">
+                <img src="https://source.unsplash.com/random/100x100/?person,face&sig=99" alt="User Avatar" class="profile-menu-avatar">
+                <span id="profile-menu-heading" class="profile-menu-username">Guest User</span>
+            </div>
+            <button id="profile-menu-close-btn" class="profile-menu-close-btn" aria-label="Close Profile Menu">&times;</button>
+        </div>
+        <nav class="profile-menu-nav" aria-label="Profile actions">
+            <ul>
+                <li><a href="#" class="profile-menu-link" data-action="my-account"><i class="fas fa-user-circle"></i> My Account</a></li>
+                <li><a href="#" class="profile-menu-link" data-action="my-orders"><i class="fas fa-box"></i> My Orders</a></li>
+                <li><a href="#" class="profile-menu-link" data-action="my-wishlist"><i class="fas fa-heart"></i> My Wishlist</a></li>
+                <li><a href="#" class="profile-menu-link" data-action="settings"><i class="fas fa-cog"></i> Settings</a></li>
+                <li><a href="#" class="profile-menu-link" data-action="location"><i class="fas fa-map-marker-alt"></i> Location / Address</a></li>
+                 <li><a href="#" class="profile-menu-link" data-action="help"><i class="fas fa-question-circle"></i> Help Center</a></li>
+            </ul>
+        </nav>
+         <div class="profile-menu-footer">
+             <button class="profile-menu-logout-btn" data-action="logout"><i class="fas fa-sign-out-alt"></i> Logout</button>
+         </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
